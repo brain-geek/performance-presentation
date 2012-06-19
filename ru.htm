@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ru-RU">
 <head>
-	<title>Шаблон презентаций Shower</title>
+	<title>Ускоряем веб-сайты</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
@@ -10,179 +10,166 @@
 		ID слайда для доступа к необходимым элементам
 		-->
 	<style>
-		#Cover h2 {
-			color:#FFF;
-			text-align:center;
-			font-size:70px;
-			}
-		#FitToWidth h2,
-		#FitToHeight h2 {
-			color:#FFF;
-			text-align:center;
-			}
+	  #data_access_numbers table {
+	  	width:100%;
+	  }
+
+		#data_access_numbers td.data {
+			text-align:left ;
+		}
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Шаблон презентаций Shower</h1>
-		<p>Вадим Макеев, Opera Software</p>
+		<h1>Ускоряем веб-приложения</h1>
 	</header>
-	<div class="slide cover" id="Cover"><div>
+	<div class="slide" id="Cover"><div>
 		<section>
-			<header>
-				<h2>Шаблон презентации Shower</h2>
-			</header>
-			<img src="pictures/cover.jpg" alt="">
+		  <header>
+	        <h1>Ускоряем веб-приложения</h1>
+	      </header>
+
+				<div style="text-align : right;">
+				Александр Розумей<br />
+				github.com/brain-geek<br />
+				@brain-geek
+				</div>
 		</section>
 	</div></div>
-	<div class="slide" id="Header"><div>
+
+	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Заголовок</h2>
-			</header>
-			<p>Очередь <code>заведено</code> создаете <strong>те про,</strong> джоэл должен написано вы всю. Получаете отказаться программистов миф мы, <em>не пишете размере</em> количества нее, по две.</p>
-			<p><a href="examples/index.htm" target="_blank">Эта ссылка откроется в новом окне</a></p>
-		</section>
-	</div></div>
-	<div class="slide" id="TwoLinesHeader"><div>
-		<section>
-			<header>
-				<h2>Две строки.<br>Мощный заголовок</h2>
-			</header>
-			<p>Очередь <code>заведено</code> создаете <strong>те про,</strong> джоэл должен написано вы всю. Получаете отказаться программистов миф мы, <em>не пишете размере</em> количества нее, по две.</p>
-		</section>
-	</div></div>
-	<div class="slide" id="UnorderedList"><div>
-		<section>
-			<header>
-				<h2>Неупорядоченный список</h2>
-			</header>
-			<ul>
-				<li>Очередь заведено создаете</li>
-				<li>Те про, джоэл должен написано вы всю</li>
-				<li>Получаете отказаться программистов
-					<ol>
-						<li>Миф мы, не пишете размере</li>
-						<li>Количества нее, по две</li>
-						<li>Заведено безостановочно</li>
-					</ol>
-				</li>
-				<li>Ещё то этой вреде внешних.</li>
-			</ul>
-		</section>
-	</div></div>
-	<div class="slide" id="OrderedList"><div>
-		<section>
-			<header>
-				<h2>Упорядоченный список</h2>
-			</header>
-			<ol>
-				<li>Миф мы, не пишете размере</li>
-				<li>Ещё то этой вреде внешних</li>
-				<li>Заведено безостановочно
-					<ul>
-						<li>Очередь заведено создаете</li>
-						<li>Те про, джоэл должен написано вы всю</li>
-						<li>Получаете отказаться программистов</li>
-					</ul>
-				</li>
-				<li>Количества нее, по две</li>
-			</ol>
-		</section>
-	</div></div>
-	<div class="slide" id="InTheMiddle"><div>
-		<section>
-			<header>
-				<h2>Посередине</h2>
-			</header>
-			<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512" class="middle">
-				<path fill="#0174A7" d="m315 259l18-18 179 179v-36l-161-161 18-18 143 143v-36l-125-125 18-18 107 107v-225c0-28-23-51-51-51h-410c-28 0-51 23-51 51v410c0 28 23 51 51 51h191c17-25 14-59-8-81l-63-63-63-63c-55-55-55-145-0-199 55-55 144-55 199 0l9 7h109l-163 163v-107l-9-9c-25-25-66-25-91-0-25 25-25 66 0 91l63 63 63 63c37 37 49 89 37 135h136c28 0 51-23 51-51v-5l-197-197z"/>
-			</svg>
-		</section>
-	</div></div>
-	<div class="slide cover" id="FitToHeight"><div>
-		<section>
-			<header>
-				<h2>Вписана по высоте</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide cover w" id="FitToWidth"><div>
-		<section>
-			<header>
-				<h2>Вписана по ширине</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide" id="CodeSample"><div>
-		<section>
-			<header>
-				<h2>Пример кода</h2>
-			</header>
-			<pre>
-				<code>&lt;html lang="ru-RU"&gt;</code>
-				<code><mark>&lt;head&gt;</mark></code>
-				<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-				<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-				<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
-				<code>    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;</code>
-				<code><mark>&lt;/head&gt;</mark></code>
-			</pre>
-		</section>
-	</div></div>
-	<div class="slide" id="CodeNotes"><div>
-		<section>
-			<header>
-				<h2>Заметки к коду</h2>
-			</header>
-			<pre>
-				<code><mark>&lt;html</mark> lang="ru-RU"&gt;</code>
-			</pre>
-			<p class="note">Получаете отказаться программистов</p>
-			<pre>
-				<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
-			</pre>
-			<p class="note">Заведено безостановочно</p>
-		</section>
-	</div></div>
-	<div class="slide shout" id="Shout"><div>
-		<section>
-			<header>
-				<h2>Опасносте<br>сообщение</h2>
-			</header>
-		</section>
-	</div></div>
-	<div class="slide shout" id="Demo"><div>
-		<section>
-			<header>
-				<h2><a href="examples/index.htm" target="_blank">Демо</a></h2>
-			</header>
-		</section>
-	</div></div>
-	<div class="slide" id="BlockQuote"><div>
-		<section>
-			<header>
-				<h2>Цитата</h2>
+				<h2>Зачем ускорять сайты?</h2>
 			</header>
 			<blockquote>
-				<p>Очередь заведено создаете те про, джоэл должен написано вы всю. Получаете отказаться программистов миф мы, не пишете размере количества нее, по две.</p>
+				A 1 second delay in page response can result in a 7% reduction in conversions<br />
+				47% of consumers expect a web page to load in 2 seconds or less.
 			</blockquote>
 		</section>
 	</div></div>
-	<div class="slide" id="ThankYou"><div>
+	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Шаблон презентаций Shower</h2>
+				<h2>Как мерять?</h2>
 			</header>
-			<p>Вадим Макеев, Opera Software</p>
+			<ol>
+				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
+				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
+			</ol>
+		</section>
+	</div></div>
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Про что ускорение чего я сегодня расскажу</h2>
+			</header>
+			<ol>
+				<li>Создание страницы</li>
+				<li>Браузер</li>
+				<li>Работа с БД</li>
+			</ol>
+		</section>
+	</div></div>
+
+
+	<!-- Page creation section -->
+
+	<div class="slide shout"><div>
+		<section>
+			<header>
+				<h2>Создание<br>страницы</h2>
+			</header>
+		</section>
+	</div></div>	
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Немного теории</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Очереди</h2>
+			</header>
+			<img src="pictures/unicorn_queue.png" alt="">
+		</section>
+	</div></div>
+
+
+
+	<!-- Browser section -->
+	<div class="slide shout"><div>
+		<section>
+			<header>
+				<h2>Браузер</h2>
+			</header>
+		</section>
+	</div></div>	
+
+
+
+
+	<!-- Database and accessing external services section -->
+	<div class="slide shout"><div>
+		<section>
+			<header>
+				<h2>Работа<br>с БД</h2>
+			</header>
+		</section>
+	</div></div>	
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Немного теории</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="data_access_numbers"><div>
+		<section>
+			<header>
+				<h2>Numbers Everyone Should Know</h2>
+			</header>
+
+			<table>
+				<tr><td>L1 cache reference                 </td><td class="data">            0.5 ns</td></tr>
+				<tr><td>L2 cache reference                 </td><td class="data">            7 ns</td></tr>
+				<tr><td>Main memory reference              </td><td class="data">          100 ns</td></tr>
+				<tr><td>Send 2K bytes over 1 Gbps network  </td><td class="data">       20,000 ns</td></tr>
+				<tr><td>Read 1 MB sequentially from memory </td><td class="data">      250,000 ns</td></tr>
+				<tr><td>Read 1 MB sequentially from network</td><td class="data">   10,000,000 ns</td></tr>
+				<tr><td>Read 1 MB sequentially from disk   </td><td class="data">   30,000,000 ns</td></tr>
+			</table>
+		</section>
+	</div></div>
+
+
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Что еще почитать/источники</h2>
+			</header>
+
 			<ul>
-				<li><a href="http://pepelsbey.net">pepelsbey.net</a></li>
-				<li><a href="http://twitter.com/pepelsbey">twitter.com/pepelsbey</a></li>
-				<li><a href="mailto:pepelsbey@gmail.com">pepelsbey@gmail.com</a></li>
+				<li><a href="https://github.com/blog/517-unicorn">Github - Unicorn!</a></li>
 			</ul>
-			<p>Shower: <a href="http://github.com/pepelsbey/shower">github.com/pepelsbey/shower</a></p>
+		</section>
+	</div></div>
+
+
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Спасибо</h2>
+				<h2>Вопросы?</h2>				
+			</header>
 		</section>
 	</div></div>
 	<!--
