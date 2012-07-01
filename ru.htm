@@ -37,7 +37,28 @@
 		</section>
 	</div></div>
 
-	<div class="slide"><div>
+	<div class="slide" id="about_what"><div>
+		<section>
+			<header>
+				<h2>Про что сегодня расскажу</h2>
+			</header>
+			<ol>
+				<li>Немного теории</li>
+				<li>Создание страницы</li>
+				<li>Маленькие трюки</li>
+			</ol>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="theory_title"><div>
+		<section>
+			<header>
+				<h2>Немного теории</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="why"><div>
 		<section>
 			<header>
 				<h2>Зачем ускорять сайты?</h2>
@@ -48,86 +69,80 @@
 			</blockquote>
 		</section>
 	</div></div>
-	<div class="slide"><div>
+
+	<div class="slide" id="ss-queues1"><div>
 		<section>
 			<header>
-				<h2>Как мерять?</h2>
+				<h2>Single-server queue</h2>
 			</header>
-			<ol>
-				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
-				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
-			</ol>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Про что ускорение чего я сегодня расскажу</h2>
-			</header>
-			<ol>
-				<li>Создание страницы</li>
-				<li>Браузер</li>
-				<li>Работа с БД</li>
-			</ol>
+			<img src="pictures/single_server_queue.png" alt=""  class="middle">
 		</section>
 	</div></div>
 
-
-	<!-- Page creation section -->
-
-	<div class="slide shout"><div>
+	<div class="slide" id="ss-queues2"><div>
 		<section>
 			<header>
-				<h2>Создание<br>страницы</h2>
+				<h2>Single-server queue</h2>
 			</header>
-		</section>
-	</div></div>	
-
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Немного теории</h2>
-			</header>
+			<p>Classic response time profile for a single-server queue</p>
+			<p><img src="pictures/single_server_queue_req_len.png" alt=""></p>
 		</section>
 	</div></div>
 
-	<div class="slide"><div>
+	<div class="slide" id="ms-queues"><div>
 		<section>
 			<header>
-				<h2>Очереди</h2>
+				<h2>Multiple-server queue</h2>
 			</header>
-			<img src="pictures/unicorn_queue.png" alt="">
+			<img src="pictures/unicorn_queue.png" alt=""  class="middle">
 		</section>
 	</div></div>
 
-
-
-	<!-- Browser section -->
-	<div class="slide shout"><div>
+	<div class="slide" id="components"><div>
 		<section>
 			<header>
-				<h2>Браузер</h2>
+				<h2>Components</h2>
 			</header>
+
+			<ul>
+				<li>Coupled</li>
+				<li>Uncoupled</li>
+			</ul>
+
+			<ul>
+				<li>High-level (software)</li>
+				<li>Low-level (hardware)</li>
+			</ul>
 		</section>
-	</div></div>	
+	</div></div>
 
-
-
-
-	<!-- Database and accessing external services section -->
-	<div class="slide shout"><div>
+	<div class="slide" id="hl-components"><div>
 		<section>
 			<header>
-				<h2>Работа<br>с БД</h2>
+				<h2>High-level components</h2>
 			</header>
+
+			<ul>
+				<li>DB</li>
+				<li>Web servers</li>
+				<li>Cache</li>
+				<li><b>Your software</b></li>
+			</ul>
 		</section>
-	</div></div>	
+	</div></div>
 
-	<div class="slide"><div>
+	<div class="slide" id="ll-components"><div>
 		<section>
 			<header>
-				<h2>Немного теории</h2>
+				<h2>Low-level components</h2>
 			</header>
+
+			<ul>
+				<li>CPU</li>
+				<li>membory</li>
+				<li>disk</li>
+				<li>network</li>
+			</ul>
 		</section>
 	</div></div>
 
@@ -149,26 +164,132 @@
 		</section>
 	</div></div>
 
+	<!-- Page creation section -->
 
-
-	<div class="slide"><div>
+	<div class="slide shout" id="page_creation"><div>
 		<section>
 			<header>
-				<h2>Что еще почитать/источники</h2>
+				<h2>Создание<br>страницы</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="whats-up"><div>
+		<section>
+			<header>
+				<h2>В чем проблема?</h2>
+			</header>
+
+			<!-- Да, это 2006 год. Но принципиально ничего не поменялось -->
+			<img src="pictures/ruby_is_slow(2006).jpg" alt="" class="middle">
+		</section>
+	</div></div>
+
+	<div class="slide" id="hl-components"><div>
+		<section>
+			<header>
+				<h2>Три пути</h2>
 			</header>
 
 			<ul>
-				<li><a href="https://github.com/blog/517-unicorn">Github - Unicorn!</a></li>
+				<li>Делать умнее</li>
+				<li>Делать быстрее</li>
+				<li>Делать меньше</li>
 			</ul>
 		</section>
 	</div></div>
 
-
-	<div class="slide"><div>
+	<div class="slide shout" id="page_creation"><div>
 		<section>
 			<header>
-				<h2>Спасибо</h2>
-				<h2>Вопросы?</h2>				
+				<h2>Делать<br>умнее</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="page_creation"><div>
+		<section>
+			<header>
+				<h2>Делать быстрее</h2>
+			</header>
+			<ul>
+				<li>SQL</li>
+				<li>C</li>
+				<!--<li>other vodoo magic</li>-->
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="page_creation"><div>
+		<section>
+			<header>
+				<h2>Делать<br>меньше</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="page_creation"><div>
+		<section>
+			<header>
+				<h2>Разные подходы</h2>
+			</header>
+
+			<ul>
+				<li>redis</li>
+				<li>memcache</li>
+				<li>nginx?</li>
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="page_creation"><div>
+		<section>
+			<header>
+				<h2>Taggable<br>cache</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<!-- Browser section -->
+	<div class="slide shout" id="small_tricks"><div>
+		<section>
+			<header>
+				<h2>Маленькие трюки</h2>
+			</header>
+		</section>
+	</div></div>	
+
+	<div class="slide" id="how"><div>
+		<section>
+			<header>
+				<h2>Как мерять?</h2>
+			</header>
+			<ol>
+				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
+				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
+			</ol>
+		</section>
+	</div></div>	
+
+	<div class="slide" id="sources"><div>
+		<section>
+			<header>
+				<h2>Откуда бралась информация</h2>
+			</header>
+
+			<ul>
+				<li><a href="https://github.com/blog/517-unicorn">Github - Unicorn!</a></li>
+				<li>http://www.absoluteastronomy.com/topics/M/M/1_model</li>
+				<li>http://www.cmg.org/measureit/issues/mit62/m_62_15.html</li>
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="thank_you"><div>
+		<section>
+			<header>
+				<h2>Спасибо<br />
+					Вопросы?</h2>				
 			</header>
 		</section>
 	</div></div>
