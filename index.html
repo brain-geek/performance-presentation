@@ -30,7 +30,7 @@
 	      </header>
 
 				<div style="text-align : right;">
-				Alex Brain<br />
+				Alexander Rozumii<br />
 				github.com/brain-geek<br />
 				@brain-geek
 				</div>
@@ -46,6 +46,7 @@
 				<li>This is my first presentation, so be tolerant.</li>
 				<li>There are errors here - lots of them.</li>
 				<li>Please, feel free to interrupt me any time.</li>
+				<li>Feel free to send pull requests. :)</li>
 			</ol>
 		</section>
 	</div></div>
@@ -111,7 +112,7 @@
 		</section>
 	</div></div>
 
-	<div class="slide" id="components"><div>
+	<div class="slide" id="components-coupled"><div>
 		<section>
 			<header>
 				<h2>Components</h2>
@@ -128,6 +129,20 @@
 			</ul>
 		</section>
 	</div></div>
+
+	<div class="slide" id="components-levels"><div>
+		<section>
+			<header>
+				<h2>Components</h2>
+			</header>
+
+			<ul>
+				<li>High-level (software)</li>
+				<li>Low-level (hardware)</li>
+			</ul>
+		</section>
+	</div></div>
+
 
 	<div class="slide" id="hl-components"><div>
 		<section>
@@ -191,7 +206,6 @@
 		</section>
 	</div></div>
 
-
 	<!-- Page creation section -->
 
 	<div class="slide shout" id="page_creation"><div>
@@ -208,7 +222,7 @@
 				<h2>Where is main problem?</h2>
 			</header>
 
-			<!-- Да, это 2006 год. Но принципиально ничего не поменялось -->
+			<!-- It's 2006. But ruby speed still sucks. -->
 			<img src="pictures/ruby_is_slow(2006).jpg" alt="" class="middle" width="792">
 		</section>
 	</div></div>
@@ -220,8 +234,9 @@
 			</header>
 
 			<ul>
-				<li>Optimize environment and app!</li>
-				<li>Rewrite</li>
+				<li>Change environment</li>
+				<li>Rewrite app</li>
+				<li>Use specialized tools</li>
 				<li>Caching</li>
 			</ul>
 		</section>
@@ -266,7 +281,7 @@
 	<div class="slide" id="approaches"><div>
 		<section>
 			<header>
-				<h2>Different tools</h2>
+				<h2>Different low-level tools</h2>
 			</header>
 
 			<ul>
@@ -276,6 +291,17 @@
 			</ul>
 		</section>
 	</div></div>
+
+	<div class="slide" id="rails_cache"><div>
+		<section>
+			<header>
+				<h2>Rails cache</h2>
+			</header>
+
+			<ul>
+			</ul>
+		</section>
+	</div></div>	
 
 	<div class="slide shout" id="taggable"><div>
 		<section>
@@ -292,10 +318,56 @@
 				<h2>Small tricks</h2>
 			</header>
 		</section>
+	</div></div>
+
+	<div class="slide" id="about_client_optimisation"><div>
+		<section>
+			<header>
+				<h2>This talk is not about client-side optimisation, but I am going to tell about:</h2>
+			</header>
+
+			<ul>
+				<li>Image optimization</li>
+				<li>Overall page rendering</li>
+			</ul>
+		</section>
 	</div></div>	
 
-	images should be optimized
-	script files in the end of the page
+
+	<div class="slide" id="big-images"><div>
+		<section>
+			<header>
+				<h2>Big images. Like these:</h2>
+			</header>
+
+			<img src="pictures/big_images.png" alt="" class="middle" width="792">
+		</section>
+	</div></div>
+
+<div class="slide" id="optimisation-snippet"><div>
+		<section>
+			<header>
+				<h2>THREE LINES OF DIFF</h2>
+			</header>
+			<pre>				
+				<code>-  :default_url =>'/system/:class/default/:style.png'</code>
+				<code>+  :default_url =>'/system/:class/default/:style.png',</code>
+				<code>+  :convert_options => { :all => "-strip <mark>-quality 65</mark>" }</code>
+			</pre>
+		</section>
+	</div></div>
+
+	<div class="slide" id="image-opt-result"><div>
+		<section>
+			<header>
+				<h2>Result?</h2>
+			</header>
+
+			<img src="pictures/image-opt-result.png" alt="" class="middle" width="792">
+		</section>
+	</div></div>
+
+s	script files in the end of the page
 
 	<div class="slide" id="how"><div>
 		<section>
