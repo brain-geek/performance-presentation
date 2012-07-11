@@ -248,14 +248,23 @@
 		</section>
 	</div></div>
 
+	<div class="slide" id="background"><div>
+		<section>
+			<header>
+				<h2>Use background processing!</h2>
+			</header>
+			<ul>
+				<li>Resque</li>
+				<li>Background job</li>
+				<li>Rails 4</li>
+			</ul>
+		</section>
+	</div></div>
 
-	Ruby versions
+<!-- 	Ruby versions
 	GC slide here
-
-
-	Background processing
 	Different web servers(unicorn!)
-
+ -->
 
 	<div class="slide" id="faster"><div>
 		<section>
@@ -299,6 +308,9 @@
 			</header>
 
 			<ul>
+				<li>Page caching</li>
+				<li>Action caching</li>
+				<li>Fragment caching</li>
 			</ul>
 		</section>
 	</div></div>	
@@ -308,6 +320,27 @@
 			<header>
 				<h2>Taggable<br>cache</h2>
 			</header>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="wish-observers"><div>
+		<section>
+			<header>
+				<h2><a href="examples/observers.html" target="_blank">With observers</a></h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="with-taggable"><div>
+		<section>
+			<header>
+				<h2>With taggable cache</h2>
+			</header>
+
+			<pre>				
+				<code>-  <% cache key, :expires_in => 1.day do %></code>
+				<code>+  <% cache key, :depends_on => [@sort_by, Product] do %></code>
+			</pre>
 		</section>
 	</div></div>
 
@@ -344,7 +377,7 @@
 		</section>
 	</div></div>
 
-<div class="slide" id="optimisation-snippet"><div>
+	<div class="slide" id="optimisation-snippet"><div>
 		<section>
 			<header>
 				<h2>THREE LINES OF DIFF</h2>
@@ -367,7 +400,7 @@
 		</section>
 	</div></div>
 
-s	script files in the end of the page
+<!-- 	page rendering flow -	script files in the end of the page -->
 
 	<div class="slide" id="how"><div>
 		<section>
@@ -377,7 +410,6 @@ s	script files in the end of the page
 			<ol>
 				<li>Firebug</li>
 				<li>Chrome developer tools</li>
-				<li><s>IE</s></li>
 				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
 				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
 			</ol>
