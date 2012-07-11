@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ru-RU">
 <head>
-	<title>Ускоряем веб-сайты</title>
+	<title>Speeding up web applications</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
@@ -21,16 +21,16 @@
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Ускоряем веб-приложения</h1>
+		<h1>Speeding up web applications</h1>
 	</header>
 	<div class="slide" id="Cover"><div>
 		<section>
 		  <header>
-	        <h1>Ускоряем веб-приложения</h1>
+	        <h1>Speeding up web applications</h1>
 	      </header>
 
 				<div style="text-align : right;">
-				Александр Розумей<br />
+				Alex Brain<br />
 				github.com/brain-geek<br />
 				@brain-geek
 				</div>
@@ -40,28 +40,20 @@
 	<div class="slide" id="about_what"><div>
 		<section>
 			<header>
-				<h2>Про что сегодня расскажу</h2>
+				<h2>What am I talking about today:</h2>
 			</header>
 			<ol>
-				<li>Немного теории</li>
-				<li>Создание страницы</li>
-				<li>Маленькие трюки</li>
+				<li>Some theory</li>
+				<li>Creating pages</li>
+				<li>Small tricks</li>
 			</ol>
-		</section>
-	</div></div>
-
-	<div class="slide shout" id="theory_title"><div>
-		<section>
-			<header>
-				<h2>Немного теории</h2>
-			</header>
 		</section>
 	</div></div>
 
 	<div class="slide" id="why"><div>
 		<section>
 			<header>
-				<h2>Зачем ускорять сайты?</h2>
+				<h2>Why speeding up sites?</h2>
 			</header>
 			<blockquote>
 				A 1 second delay in page response can result in a 7% reduction in conversions<br />
@@ -70,10 +62,18 @@
 		</section>
 	</div></div>
 
+	<div class="slide shout" id="theory_title"><div>
+		<section>
+			<header>
+				<h2>Some theory</h2>
+			</header>
+		</section>
+	</div></div>
+
 	<div class="slide" id="ss-queues1"><div>
 		<section>
 			<header>
-				<h2>Single-server queue</h2>
+				<h2>ueue</h2>
 			</header>
 			<img src="pictures/queue.jpg" alt="" class="middle">
 		</section>
@@ -169,7 +169,7 @@
 	<div class="slide shout" id="page_creation"><div>
 		<section>
 			<header>
-				<h2>Создание<br>страницы</h2>
+				<h2>Page<br>creation</h2>
 			</header>
 		</section>
 	</div></div>
@@ -177,7 +177,7 @@
 	<div class="slide" id="whats-up"><div>
 		<section>
 			<header>
-				<h2>В чем проблема?</h2>
+				<h2>Where is main problem?</h2>
 			</header>
 
 			<!-- Да, это 2006 год. Но принципиально ничего не поменялось -->
@@ -188,29 +188,36 @@
 	<div class="slide" id="three-ways"><div>
 		<section>
 			<header>
-				<h2>Три пути</h2>
+				<h2>Three ways</h2>
 			</header>
 
 			<ul>
-				<li>Оптимизировать код и окружение</li>
-				<li>Переписать на другом языке</li>
-				<li>Кэшировать</li>
+				<li>Optimize environment and app!</li>
+				<li>Rewrite</li>
+				<li>Caching</li>
 			</ul>
 		</section>
 	</div></div>
 
-	<div class="slide shout" id="smarter"><div>
+	<div class="slide cover" id="opmitize-all-the-stuff"><div>
 		<section>
-			<header>
-				<h2>Делать<br>умнее</h2>
-			</header>
+			<img src="pictures/optimize-all-the-stuff.png" alt="">
 		</section>
 	</div></div>
+
+
+	Ruby versions
+	GC slide here
+
+
+	Background processing
+	Different web servers(unicorn!)
+
 
 	<div class="slide" id="faster"><div>
 		<section>
 			<header>
-				<h2>Делать быстрее</h2>
+				<h2>Rewrite using other languages</h2>
 			</header>
 			<ul>
 				<li>SQL</li>
@@ -220,13 +227,10 @@
 		</section>
 	</div></div>
 
-	GC slide here
-	Background
-
 	<div class="slide shout" id="less"><div>
 		<section>
 			<header>
-				<h2>Делать<br>меньше</h2>
+				<h2>Caching</h2>
 			</header>
 		</section>
 	</div></div>
@@ -234,7 +238,7 @@
 	<div class="slide" id="approaches"><div>
 		<section>
 			<header>
-				<h2>Разные подходы</h2>
+				<h2>Different tools</h2>
 			</header>
 
 			<ul>
@@ -257,21 +261,23 @@
 	<div class="slide shout" id="small_tricks"><div>
 		<section>
 			<header>
-				<h2>Маленькие трюки</h2>
+				<h2>Small tricks</h2>
 			</header>
 		</section>
 	</div></div>	
 
-	вес картинок
-	скрипті в конце
-
+	images should be optimized
+	script files in the end of the page
 
 	<div class="slide" id="how"><div>
 		<section>
 			<header>
-				<h2>Как мерять?</h2>
+				<h2>How to measure?</h2>
 			</header>
 			<ol>
+				<li>Firebug</li>
+				<li>Chrome developer tools</li>
+				<li><s>IE</s></li>
 				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
 				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
 			</ol>
@@ -281,7 +287,7 @@
 	<div class="slide" id="sources"><div>
 		<section>
 			<header>
-				<h2>Откуда бралась информация</h2>
+				<h2>Sources</h2>
 			</header>
 
 			<ul>
@@ -295,8 +301,8 @@
 	<div class="slide shout" id="thank_you"><div>
 		<section>
 			<header>
-				<h2>Спасибо<br />
-					Вопросы?</h2>				
+				<h2>Thank you!<br />
+					Questions?</h2>				
 			</header>
 		</section>
 	</div></div>
