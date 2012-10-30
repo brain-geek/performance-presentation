@@ -254,6 +254,32 @@
 		</section>
 	</div></div>
 
+	<div class="slide" id="measuring"><div>
+		<section>
+			<header>
+				<h2>How to measure?</h2>
+			</header>
+			<ol>
+				<li>Firebug</li>
+				<li>Chrome developer tools</li>
+				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
+				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
+			</ol>
+		</section>
+	</div></div>
+
+	<div class="slide cover w" id="hi-level=profiling"><div>
+		<section>
+			<header>
+				<h2>Rails log</h2>
+			</header>
+
+			<!-- It's 2006. But ruby speed still sucks. -->
+			<img src="pictures/rails-log.png" />
+		</section>
+	</div></div>
+
+
 	<div class="slide" id="perf-monitor"><div>
 		<section>
 			<header>
@@ -261,7 +287,6 @@
 			</header>
 
 			<ul>
-				<li><a href="pictures/rails-log.png">Rails log</a> is cool</li>
 				<li>Ruby-prof</li>
 				<li>Rails profiler</li>
 			</ul>
@@ -397,20 +422,16 @@
 			</header>
 
 			<pre>
-				<code>  def ukrnet</code>
-				<code>    @text = Net::HTTP.get "external", "/ad.php?site=somesite.ua&output=xml&page=#{request.path}"</code>
+				<code>  def informer</code>
+				<code>    @text = Net::HTTP.get "external", "/inf.php"</code>
 				<code>    render</code>
 				<code>  end</code>
 			</pre>
 		</section>
 	</div></div>
 
-	<div class="slide cover" id="background-example1"><div>
+	<div class="slide cover w" id="background-example1"><div>
 		<section>
-			<header>
-				<h2>What happens next</h2>
-			</header>
-
 			<img src="pictures/airbrake.png" />
 		</section>
 	</div></div>
@@ -826,20 +847,6 @@
 	</div></div>
 
 	<!-- 	page rendering flow -	script files in the end of the page -->
-
-	<div class="slide" id="how"><div>
-		<section>
-			<header>
-				<h2>How to measure?</h2>
-			</header>
-			<ol>
-				<li>Firebug</li>
-				<li>Chrome developer tools</li>
-				<li><a href="http://tools.pingdom.com/fpt/">Full Page test</a></li>
-				<li><a href="http://httpd.apache.org/docs/2.0/programs/ab.html">Apache benchmark(ab)</a></li>
-			</ol>
-		</section>
-	</div></div>	
 
 	<div class="slide" id="sources"><div>
 		<section>
