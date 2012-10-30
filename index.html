@@ -19,6 +19,22 @@
 			color:black;
 		}
 
+    #expire_timeout3  pre, #rails-default-lb pre {
+      margin-top: 45px;
+    }
+    #expire_timeout3 pre code, #rails-default-additional-benefits pre code, #rails-default-expire1 pre code {
+      font-size: 50%;
+    }
+
+    #rails-default-fixed .error {
+      color: red;
+      font: bold;
+    }
+
+    #rails-default-expire0 header, #rails-default-expire1 header, #rails-default2 header {
+      margin: 0px;
+    }
+
 	</style>
 </head>
 <body class="list">
@@ -246,11 +262,10 @@
 		</section>
 	</div></div>
 
-
 	<div class="slide" id="three-ways"><div>
 		<section>
 			<header>
-				<h2>At least 3 simple ways</h2>
+				<h2>3 ways for speeding up sites</h2>
 			</header>
 
 			<ul>
@@ -298,7 +313,7 @@
 	<div class="slide" id="gc-tuning"><div>
 		<section>
 			<header>
-				<h2>GC tuning:</h2>
+				<h2>GC tuning</h2>
 			</header>
 			<ul>
 				<li>Ruby Enterprise Edition</li>
@@ -369,6 +384,31 @@
 		</section>
 	</div></div>
 
+	<div class="slide" id="background-example0"><div>
+		<section>
+			<header>
+				<h2>When to use it?</h2>
+			</header>
+
+			<pre>
+				<code>  def ukrnet</code>
+				<code>    @text = Net::HTTP.get "external", "/ad.php?site=somesite.ua&output=xml&page=#{request.path}"</code>
+				<code>    render</code>
+				<code>  end</code>
+			</pre>
+		</section>
+	</div></div>
+
+	<div class="slide cover" id="background-example1"><div>
+		<section>
+			<header>
+				<h2>What happens next</h2>
+			</header>
+
+			<img src="pictures/airbrake.png" />
+		</section>
+	</div></div>
+
 	<div class="slide shout" id="less"><div>
 		<section>
 			<header>
@@ -386,7 +426,8 @@
 			<ul>
 				<li>redis</li>
 				<li>memcache</li>
-				<li>nginx?</li>
+				<li>nginx</li>
+				<li>file store</li>
 			</ul>
 		</section>
 	</div></div>
@@ -406,31 +447,318 @@
 		</section>
 	</div></div>	
 
-	<div class="slide shout" id="taggable"><div>
-		<section>
-			<header>
-				<h2>Taggable<br>cache</h2>
-			</header>
-		</section>
-	</div></div>
+  <div class="slide" id="expiring-cache"><div>
+    <section>
+      <header>
+        <h2>Cache invalidation</h2>
+      </header>
+      <blockquote>
+        <p>There are only two hard things in Computer Science: cache invalidation and naming things. <br /> Phil Karlton</p>
+      </blockquote>
+    </section>
+  </div></div>
 
-	<div class="slide shout" id="wish-observers"><div>
-		<section>
-			<header>
-				<h2><a href="examples/observers.html" target="_blank">30 lines - cache expiry with observers</a></h2>
-			</header>
-		</section>
-	</div></div>
+  <div class="slide" id="rails-default-expire0"><div>
+    <section>
+      <header>
+        <h2>Expiring cache directly</h2>
+      </header>
 
-	<div class="slide" id="with-taggable"><div>
+      <pre>
+        <code>class ProductsController &lt; ActionController</code>
+        <code>  caches_page :index</code>
+        <code>  def index</code>
+        <code>    @products = Products.all</code>
+        <code>  end</code>
+        <code>  def create</code>
+        <code>    expire_page :action => :index</code>
+        <code>  end</code>
+        <code>end</code>
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide" id="rails-default-expire1"><div>
+    <section>
+      <header>
+        <h2>Expiring cache by sweepers</h2>
+      </header>
+
+      <pre>
+        <code>class ProductSweeper &lt; ActionController::Caching::Sweeper</code>
+        <code>  observe Product # This sweeper is going to keep an eye on the Product model</code>
+        <code>  def after_create(product)</code>
+        <code>    expire_cache_for(product)</code>
+        <code>  end</code>
+        <code>  def after_update(product)</code>
+        <code>    expire_cache_for(product)</code>
+        <code>  end</code>
+        <code>  def after_destroy(product)</code>
+        <code>    expire_cache_for(product)</code>
+        <code>  end</code>
+        <code>  private</code>
+        <code>  def expire_cache_for(product)</code>
+        <code>    expire_page(:controller => 'products', :action => 'index')</code>
+        <code>    expire_fragment('all_available_products')</code>
+        <code>  end</code>
+        <code>end</code>
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide" id="expire_timeout0"><div>
+    <section>
+      <header>
+        <h2>Expiring cache by timeout</h2>
+      </header>
+
+      <code>cache.write(key, value, :expires_in => 1.minute)</code>
+    </section>
+  </div></div>
+
+  <div class="slide" id="expire_timeout1"><div>
+    <section>
+      <header>
+        <h2>Using object as key</h2>
+      </header>
+
+      <pre>
+        <code>cache.write([key, @article], value)</code>
+      </pre>
+
+      <p class="note">
+        Well, actualy this is not cache expiry. But by setting object with its fingerprint as cache key, you can be sure that after object change this cache entry will not be accessed.
+      </p>
+    </section>
+  </div></div>
+
+  <div class="slide" id="expire_timeout2"><div>
+    <section>
+      <header>
+        <h2>Race condition TTL</h2>
+      </header>
+
+      <p class="note">
+        Setting :race_condition_ttl is very useful in situations where a cache entry is used very frequently and is under heavy load. If a cache expires and due to heavy load seven different processes will try to read data natively and then they all will try to write to cache. To avoid that case the first process to find an expired cache entry will bump the cache expiration time by the value set in :race_condition_ttl.          
+      </p>
+    </section>
+  </div></div>
+
+
+<!--   <div class="slide" id="expire_timeout3"><div>
+    <section>
+      <header>
+        <pre>
+          <code>cache = ActiveSupport::Cache::MemoryStore.new(:expires_in => 1.minute)</code>
+          <code>cache.write("foo", "original value")</code>
+          <code>sleep 60</code>
+          <code>Thread.new do</code>
+          <code>  val_1 = cache.fetch("foo", :race_condition_ttl => 10) do</code>
+          <code>    sleep 1</code>
+          <code>    "new value 1"</code>
+          <code>  end</code>
+          <code>end</code>
+          <code>Thread.new do</code>
+          <code>  val_2 = cache.fetch("foo", :race_condition_ttl => 10) do</code>
+          <code>    "new value 2"</code>
+          <code>  end</code>
+          <code>end</code>
+          <code># val_1 => "new value 1"</code>
+          <code># val_2 => "original value"</code>
+          <code># sleep 10 # First thread extend the life of cache by another 10 seconds</code>
+          <code># cache.fetch("foo") => "new value 1"</code>
+        </pre>
+      </header>
+    </section>
+  </div></div>
+ -->
+  <div class="slide shout" id="rails-default3"><div>
+    <section>
+      <header>
+        <h2>Let's use it on the real site</h2>
+      </header>
+    </section>
+  </div></div>
+
+  <div class="slide cover" id="lb_nocomments"><div>
+    <section>
+      <img src="pictures/lb.png" alt="">
+    </section>
+  </div></div>
+
+  <div class="slide cover" id="lb_commented"><div>
+    <section>
+      <img src="pictures/lb_commented.png" alt="">
+    </section>
+  </div></div>
+
+  <div class="slide" id="rails-default-lb"><div>
+    <section>
+      <pre>
+        <code>class ArticleSweeper &lt; ActionController::Caching::Sweeper</code>
+        <code>  def expire_cache_for(article)</code>
+        <code>    expire_fragment('main_slider') if article.slide</code>
+        <code>    expire_fragment('main_theme') if article.theme</code>
+        <code>    expire_fragment('main_published')</code>
+        <code>    expire_fragment('main_blogs') if article.blog_article?</code>
+        <code>    expire_fragment('main_top') if article.top</code>
+        <code>  end</code>
+        <code>end</code>      
+      </pre>
+    </section>
+  </div></div>
+
+<!--   <div class="slide" id="rails-default-why-bad"><div>
+    <section>
+      <header>
+        <h2>Why bad?</h2>
+      </header>
+
+      <p>
+        <b>It is hard to maintain:</b> I've made some mistakes in previous slide
+      </p>
+    </section>
+  </div></div>
+ -->
+<!--   <div class="slide" id="rails-default-fixed"><div>
+    <section>
+      <pre>
+        <code>class ArticleSweeper < ActionController::Caching::Sweeper</code>
+        <code>  def expire_cache_for(product)</code>
+        <code>    expire_fragment('main_slide<span class="error">r</span>') if article.slide</code>
+        <code>    expire_fragment('main_theme') if article.theme</code>
+        <code class="error">    expire_fragment('main_published')</code>
+        <code>    expire_fragment('main_blogs') if article.blog_article?</code>
+        <code>    expire_fragment('main_top') if article.top</code>
+        <code>  end</code>
+        <code>end</code>      
+      </pre>
+    </section>
+  </div></div>
+ -->
+  <div class="slide" id="rails-default-additional-benefits"><div>
+    <section>
+      <header>
+        <h2>And with multiple selects you won`t get this:</h2>
+      </header>
+
+      <pre>
+        <code>[:ru, :uk].each do |loc|</code>
+        <code>  # Expire a fragment</code>
+        <code>  ActionController::Base.new.expire_fragment("cache_tabs_#{loc}")</code>
+        <code>  ActionController::Base.new.expire_fragment("cache_tabs_hide_videos_#{loc}")</code>
+        <code>  product.category.each do |category|</code>
+        <code>    [product.hersteller, product.fill, product.sizes.to_a].flatten.compact.each do |relation|</code>
+        <code>      (1...relation.products.count).each do |page|</code>
+        <code>        ActionController::Base.new.expire_fragment [loc, relation.class.to_s.downcase, relation.id.to_s, page.to_s, category.id]</code>
+        <code>      end</code>
+        <code>      [Hersteller, Size, Fill].each do |cls|</code>
+        <code>        ActionController::Base.new.expire_fragment [loc, 'count', relation.class.to_s.downcase, relation.id.to_s, cls.to_s, category.id]</code>
+        <code>      end</code>
+        <code>    end</code>
+        <code>  end</code>
+        <code>end</code>        
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide shout" id="what-tools"><div>
+    <section>
+      <header>
+        <h2>Caching tools</h2>
+      </header>
+    </section>
+  </div></div>
+
+  <div class="slide shout" id="cache_digests0"><div>
+    <section>
+      <header>
+        <h2>Cache Digests</h2>
+      </header>
+    </section>
+  </div></div>
+
+  <div class="slide" id="cache_digests1"><div>
+    <section>
+      <header>
+        <h2>Cache Digests</h2>
+      </header>
+      <p>
+          With this plugin, all calls to #cache in the view will automatically append a digest of that template and all of its dependencies! So you no longer need to manually increment versions in the specific templates you're working on or care about what other templates are depending on the change you make.
+      </p>
+    </section>
+  </div></div>
+
+  <div class="slide" id="cachier0"><div>
+    <section>
+      <header>
+        <h2>Cachier</h2>
+      </header>
+      <p>
+        <b>github.com/twinturbo/cashier</b><br />
+        Cache associate individual cache keys with a tag, then expire them all at once. This took my 7 layer loop down to one line of code. It's also made managing the cache throught my application much easier.
+      </p>
+    </section>
+  </div></div>
+
+
+  <div class="slide" id="cachier1"><div>
+    <section>
+      <header>
+        <h2>Cachier</h2>
+      </header>
+
+      <pre>
+        <code># can have multiple tags</code>
+        <code>cache @something, :tag => ['dashboard', 'settings']</code>
+        <code># You can also use Rails.cache.write</code>
+        <code>Rails.cache.write("foo", "bar", :tag => ["some_tag"])</code>
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide" id="cachier2"><div>
+    <section>
+      <header>
+        <h2>Cachier</h2>
+      </header>
+
+      <p class="note">
+        But you still need to expire keys:
+      </p>
+
+      <pre>
+        <code># in a sweeper</code>
+        <code>Cashier.expire 'some-component'</code>
+      </pre>
+    </section>
+  </div></div>
+
+  <div class="slide" id="taggable0"><div>
+    <section>
+      <header>
+        <h2>Taggable cache</h2>
+      </header>
+      <p>
+        <b>github.com/brain-geek/taggable-cache</b><br />
+        Taggable cache provides possibility for automatic cache entries expiration by providing possibility to map cache keys with AR objects.
+      </p>
+      <p class="note">
+        Actualy, it does the same thing. The difference between this solutions is that taggable cache uses AR records and scopes. It deletes corresponding keys on corresponding object cache by using AR hooks. Though, it supports strings too.
+      </p>      
+    </section>
+  </div></div>
+
+	<div class="slide" id="taggable1"><div>
 		<section>
 			<header>
-				<h2>With taggable cache</h2>
+				<h2>Taggable cache</h2>
 			</header>
 
 			<pre>				
-				<code>-  <% cache key, :expires_in => 1.day do %></code>
-				<code>+  <% cache key, :depends_on => [@sort_by, Product] do %></code>
+				<code><% cache 'main_slide', :depends_on => [Article.slide] do %></code>
+        <code><% cache 'main_theme', :depends_on => [Article.theme] do %></code>
+        <code><% cache 'main_feed', :depends_on => [Article] do %></code>
 			</pre>
 		</section>
 	</div></div>
